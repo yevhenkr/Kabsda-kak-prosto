@@ -32,9 +32,6 @@ const Dialogs = (props) => {
       <Message name='Hi' />
       <Message name='Answer' />
       <Message name='Yo' />
-      {/* <div className={s.messeg}>Hi</div>
-      <div className={s.messeg}> Answer</div>
-      <div className={s.messeg}>Yo</div> */}
     </div>
   </div>
 
