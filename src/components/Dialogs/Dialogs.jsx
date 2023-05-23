@@ -18,20 +18,32 @@ const Message = (props) => {
   </div>
 }
 
+let dialogs = [
+  { id: 1, name: 'Kirill', className: `${s.dialoguesItem} ${s.active}` },
+  { id: 2, name: "Viky", className: s.dilogesItem },
+  { id: 3, name: "Taras", className: s.dilogesItem },
+  { id: 4, name: "Nastiy", className: s.dilogesItem },
+  { id: 5, name: "Oleg", className: s.dilogesItem }
+]
+
+let messages = [
+  { id: 1, name: 'Hi' },
+  { id: 2, name: "Answer" },
+  { id: 3, name: "Yo" },
+]
+
+let dialogsElements = dialogs.map(d => <Dialog name={d.name} id={d.id} className={d.className} />)
+let messagesElements = messages.map(
+  m => <Message name={m.name} />
+);
+
 const Dialogs = (props) => {
-  // const location = useLocation();
   return <div className={s.diloges}>
     <div className={s.dilogesItems}>
-      <Dialog name='Kirill' id='1' className={`${s.dialoguesItem} ${s.active}`} />
-      <Dialog name='Viky' id='2' className={s.dilogesItem} />
-      <Dialog name='Taras' id='3' className={s.dilogesItem} />
-      <Dialog name='Nastiy' id='4' className={s.dilogesItem} />
-      <Dialog name='Oleg' id='5' className={s.dilogesItem} />
+      {dialogsElements}
     </div>
-    <div className={s.dilogesMesseges}>
-      <Message name='Hi' />
-      <Message name='Answer' />
-      <Message name='Yo' />
+    <div className={s.dilogesMessages}>
+      {messagesElements}
     </div>
   </div>
 

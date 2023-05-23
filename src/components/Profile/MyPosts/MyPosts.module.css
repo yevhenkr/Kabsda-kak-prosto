@@ -1,3 +1,14 @@
-.item{
-    color: aqua;
-  }
+.item {
+  color: aqua;
+}
+
+.myPostButton {
+  margin-bottom: 10px;
+}
+
+.myPostTexArea{
+  margin-bottom: 10px;
+}
+.postsBlock{
+  padding-left: 10px;
+}
