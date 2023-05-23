@@ -1,0 +1,18 @@
+.diloges {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.dilogesItems {
+}
+
+.dilogesItem.active {
+    color: gold;
+}
+.dilog {}
+
+.dilogesMesseges {}
+
+.messeg {}
