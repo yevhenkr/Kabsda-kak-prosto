@@ -1,26 +1,32 @@
 import React from "react";
 import s from './Navbar.module.css';
-let c2 = "active";
-console.log("c2 = " +c2 );
-console.log("s.active = " + s.active);
+import { Link, useMatch } from "react-router-dom";
+{/* <NavLink to="/settings" activeClassName={s.active}>Settings</NavLink> */ }
+
 
 const Navbar = () => {
+  const profileMatch = useMatch("/profile");
+  const dailogesMatch = useMatch("/dailoges");
+  const newsMatch = useMatch("/news");
+  const musicMatch = useMatch("/music");
+  const settingsMatch = useMatch("/settings");
   return (
     <nav className={s.nav}>
       <div className={s.item}>
-        <a href="/profile">Profile</a>
+        <Link to="/profile" className={profileMatch ? s.activeLink : ""}>Profile</Link>
       </div>
-      <div className={s.item}>
-        <a href="/dailoges">Dailoges</a>
-      </div>
+      {/* <div className={`${s.item} ${s.active}`}> */}
       <div className={`${s.item} ${s.active}`}>
-        <a href="/news">News</a>
+        <Link to="/dialoges" className={dailogesMatch ? s.activeLink : ""}>Messages</Link>
       </div>
       <div className={s.item}>
-        <a href="/music">Music</a>
+        <Link to="/news" className={newsMatch ? s.activeLink : ""}>News</Link>
       </div>
       <div className={s.item}>
-        <a href="/settings">Settings</a>
+        <Link to="/music" className={musicMatch ? s.activeLink : ""}>Music</Link>
+      </div>
+      <div className={s.item}>
+        <Link to="/settings" className={settingsMatch ? s.activeLink : ""}>Settings</Link>
       </div>
     </nav>
   )
