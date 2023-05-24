@@ -8,19 +8,20 @@ import { Routes, Route } from "react-router-dom";
 
 
 const App = (props) => {
+  // debugger;
   return (
     <div className='app-wrapper'>
       <Header />
       <Navbar />
       <div className='app-wrapper-content'>
         <Routes>
-          <Route path='/dialoges' element={<Dialogs title='Dialoges' dialogs={props.dialogs} messages={props.messages} />} />
-          <Route path='/dialoges/:id' element={<Dialogs title='Dialoges' dialogs={props.dialogs} messages={props.messages} />} />
+          <Route path='/dialoges' element={<Dialogs title='Dialoges' dialogePage={props.state.dialogePage} />} />
+          <Route path='/dialoges/:id' element={<Dialogs title='Dialoges'dialogePage={props.state.dialogePage} />} />
 
-          <Route path='/news' element={<Dialogs title='News' dialogs={props.dialogs} messages={props.messages} />} />
-          <Route path='/music' element={<Dialogs title='Music' dialogs={props.dialogs} messages={props.messages} />} />
-          <Route path='/settings' element={<Dialogs title='Settings' dialogs={props.dialogs} messages={props.messages} />} />
-          <Route path='/profile' element={<Profile posts={props.posts} />} />
+          <Route path='/news' element={<Dialogs title='News' dialogePage={props.state.dialogePage} />} />
+          <Route path='/music' element={<Dialogs title='Music' dialogePage={props.state.dialogePage} />} />
+          <Route path='/settings' element={<Dialogs title='Settings' dialogePage={props.state.dialogePage} />} />
+          <Route path='/profile' element={<Profile posts={props.state.postsPage} />} />
         </Routes>
       </div>
     </div>
