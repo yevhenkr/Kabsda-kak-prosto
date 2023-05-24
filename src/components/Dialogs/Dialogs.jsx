@@ -1,20 +1,7 @@
 import React from "react";
 import s from './Dialogs.module.css'
-import { Link } from "react-router-dom";
-
-const Dialog = (props) => {
-  return <div>
-    <Link to={`/dialoges/${props.id}`} className={props.className}>
-      {props.name}
-    </Link>
-  </div>
-}
-
-const Message = (props) => {
-  return <div>
-    {props.name}
-  </div>
-}
+import Dialog from './Dialog/Dialog'
+import Message from './Message/Message'
 
 let dialogs = [
   { key: "11", id: 1, name: 'Kirill', className: `${s.dialogesItem} ${s.active}` },
@@ -23,7 +10,6 @@ let dialogs = [
   { key: "14", id: 4, name: "Nastiy", className: s.dilogesItem },
   { key: "15", id: 5, name: "Oleg", className: s.dilogesItem }
 ]
-
 let dialogsElements = dialogs.map(d => <Dialog key={d.key} name={d.name} id={d.id} className={d.className} />)
 
 let messages = [
@@ -31,10 +17,7 @@ let messages = [
   { key: "22", id: 2, name: "Answer" },
   { key: "23", id: 3, name: "Yo" },
 ]
-
-let messagesElements = messages.map(
-  m => <Message key={m.key} name={m.name} />
-);
+let messagesElements = messages.map(m => <Message key={m.key} name={m.name} />);
 
 const Dialogs = (props) => {
   return <div className={s.diloges}>
@@ -45,7 +28,6 @@ const Dialogs = (props) => {
       {messagesElements}
     </div>
   </div>
-
 }
 
 export default Dialogs;

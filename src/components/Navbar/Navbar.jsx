@@ -14,7 +14,6 @@ const Navbar = () => {
       <div className={s.item}>
         <Link to="/profile" className={profileMatch ? s.activeLink : ""}>Profile</Link>
       </div>
-      {/* <div className={`${s.item} ${s.active}`}> */}
       <div className={`${s.item} ${s.active}`}>
         <Link to="/dialoges" className={dailogesMatch ? s.activeLink : ""}>Messages</Link>
       </div>
