@@ -1,7 +1,6 @@
 import React from "react";
 import s from './Navbar.module.css';
 import { Link, useMatch } from "react-router-dom";
-{/* <NavLink to="/settings" activeClassName={s.active}>Settings</NavLink> */ }
 
 
 const Navbar = () => {
