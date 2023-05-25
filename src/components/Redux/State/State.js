@@ -42,4 +42,12 @@ let state = {
 
 }
 
+export let addPost = (newText) => {
+    let newPost = {
+        key: "15", messeges: newText, likeCount: '10'
+    }
+    state.postsPage.posts.push(newPost);
+    debugger;
+}
+
 export default state;
