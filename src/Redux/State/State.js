@@ -22,7 +22,8 @@ let state = {
             { key: "12", messeges: 'My post2', likeCount: '4' },
             { key: "13", messeges: 'My post3', likeCount: '6' },
             { key: "14", messeges: 'My post4', likeCount: '8' }
-        ]
+        ],
+        newText: ''
     },
     sideBar: {
         friends: [
@@ -48,6 +49,12 @@ export let addPost = (newText) => {
         key: "15", messeges: newText, likeCount: '10'
     }
     state.postsPage.posts.push(newPost);
+    renderEntierTree(state);
+    state.postsPage.posts.newText = '';
+}
+
+export let addNewText = (newText) => {
+    state.postsPage.posts.newText = newText;
     renderEntierTree(state);
 }
 

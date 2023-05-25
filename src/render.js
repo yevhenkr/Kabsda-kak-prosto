@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import { addPost } from './Redux/State/State'
+import { addNewText } from './Redux/State/State'
 
 
 import App from './App';
@@ -11,7 +12,10 @@ export let renderEntierTree = (state) => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state} addPost={addPost} />
+        <App 
+        state={state} 
+        addNewText={addNewText} 
+        addPost={addPost} />
       </BrowserRouter>
     </React.StrictMode>
   );
