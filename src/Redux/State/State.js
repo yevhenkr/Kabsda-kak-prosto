@@ -1,4 +1,5 @@
 import s from '../../components/Dialogs/Dialogs.module.css'
+import { renderEntierTree } from '../../render';
 
 let state = {
     dialogePage: {
@@ -47,6 +48,7 @@ export let addPost = (newText) => {
         key: "15", messeges: newText, likeCount: '10'
     }
     state.postsPage.posts.push(newPost);
+    renderEntierTree(state);
 }
 
 export default state;
