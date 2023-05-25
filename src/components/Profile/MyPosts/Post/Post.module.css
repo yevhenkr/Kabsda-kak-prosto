@@ -1,8 +1,8 @@
-.item{
-    color: rgb(65, 107, 2);
-  }
+.item {
+  color: rgb(65, 107, 2);
+}
 
-  .item img{
-    max-width: 30px;
-    border-radius: 50%;
-  }
+.item img {
+  max-width: 30px;
+  border-radius: 50%;
+}

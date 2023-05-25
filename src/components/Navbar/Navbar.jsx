@@ -2,7 +2,6 @@ import React from "react";
 import s from './Navbar.module.css';
 import { Link, useMatch } from "react-router-dom";
 
-
 const Navbar = () => {
   const profileMatch = useMatch("/profile");
   const dailogesMatch = useMatch("/dailoges");

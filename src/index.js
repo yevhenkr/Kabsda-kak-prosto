@@ -3,29 +3,8 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import state from './components/Redux/State/State'
-import s from './components/Dialogs/Dialogs.module.css'
 
 import App from './App';
-// import './index.css';
-
-// let dialogs = [
-//   { key: "11", id: 1, name: 'Kirill', className: `${s.dialogesItem} ${s.active}` },
-//   { key: "12", id: 2, name: "Viky", className: s.dilogesItem },
-//   { key: "13", id: 3, name: "Taras", className: s.dilogesItem },
-//   { key: "14", id: 4, name: "Nastiy", className: s.dilogesItem },
-//   { key: "15", id: 5, name: "Oleg", className: s.dilogesItem }
-// ]
-// let messages = [
-//   { key: "21", id: 1, name: 'Hi' },
-//   { key: "22", id: 2, name: "Answer" },
-//   { key: "23", id: 3, name: "Yo" },
-// ]
-// let posts = [
-//   { key: "11", messeges: 'My post', likeCount: '2' },
-//   { key: "12", messeges: 'My post2', likeCount: '4' },
-//   { key: "13", messeges: 'My post3', likeCount: '6' },
-//   { key: "14", messeges: 'My post4', likeCount: '8' }
-// ]
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

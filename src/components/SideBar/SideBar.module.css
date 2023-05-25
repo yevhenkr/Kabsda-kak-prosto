@@ -1,0 +1,16 @@
+.sideBar {
+  grid-area: s;
+  background-color: black;
+  padding-left: 20px;
+}
+
+.sideBarItems {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.title {
+  color: white;
+  font-size: 30px;
+  font-weight: 100;
+}

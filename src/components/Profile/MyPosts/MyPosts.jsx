@@ -18,4 +18,5 @@ const MyPosts = (props) => {
     {postsElements}
   </div>
 }
+
 export default MyPosts;
