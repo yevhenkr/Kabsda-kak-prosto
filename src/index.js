@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
-import state from './components/Redux/State/State'
-import {addPost} from './components/Redux/State/State'
+import state from './Redux/State/State'
+import {addPost} from './Redux/State/State'
 
 
 import App from './App';

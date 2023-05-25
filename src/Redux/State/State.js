@@ -1,4 +1,4 @@
-import s from '../../../components/Dialogs/Dialogs.module.css'
+import s from '../../components/Dialogs/Dialogs.module.css'
 
 let state = {
     dialogePage: {
