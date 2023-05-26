@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
-import { addPost, addNewText, subscribe } from './Redux/State/State'
+import store from './Redux/State/State'
 import state from './Redux/State/State'
 import App from './App'
 
@@ -13,14 +13,11 @@ export let renderEntierTree = (state) => {
     root.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App
-                    state={state}
-                    addNewText={addNewText}
-                    addPost={addPost} />
+                <App store={store}/>
             </BrowserRouter>
         </React.StrictMode>
     );
 }
-renderEntierTree(state); //Нжно отдать в stste как колбек
+renderEntierTree(store); //Нжно отдать в stste как колбек
 
-subscribe(renderEntierTree); //теперь в state может візвать нашу іцункцию 
+store.subscribe(renderEntierTree); //теперь в state может візвать нашу іцункцию 

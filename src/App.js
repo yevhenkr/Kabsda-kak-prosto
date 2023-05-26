@@ -12,20 +12,16 @@ const App = (props) => {
     <div className='app-wrapper'>
       <Header />
       <Navbar />
-      <Sidebar items={props.state.sideBar} />
+      <Sidebar items={props.store.state.sideBar} />
       <div className='app-wrapper-content'>
         <Routes>
-          <Route path='/dialoges' element={<Dialogs title='Dialoges' dialogePage={props.state.dialogePage} />} />
-          <Route path='/dialoges/:id' element={<Dialogs title='Dialoges' dialogePage={props.state.dialogePage} />} />
+          <Route path='/dialoges' element={<Dialogs title='Dialoges' dialogePage={props.store.state.dialogePage} />} />
+          <Route path='/dialoges/:id' element={<Dialogs title='Dialoges' dialogePage={props.store.state.dialogePage} />} />
 
-          <Route path='/news' element={<Dialogs title='News' dialogePage={props.state.dialogePage} />} />
-          <Route path='/music' element={<Dialogs title='Music' dialogePage={props.state.dialogePage} />} />
-          <Route path='/settings' element={<Dialogs title='Settings' dialogePage={props.state.dialogePage} />} />
-          <Route path='/profile' element={<Profile
-            posts={props.state.postsPage}
-            addNewText={props.addNewText}
-            addPost={props.addPost}
-          />} />
+          <Route path='/news' element={<Dialogs title='News' dialogePage={props.store.state.dialogePage} />} />
+          <Route path='/music' element={<Dialogs title='Music' dialogePage={props.store.state.dialogePage} />} />
+          <Route path='/settings' element={<Dialogs title='Settings' dialogePage={props.store.state.dialogePage} />} />
+          <Route path='/profile' element={<Profile store={props.store} />} />
         </Routes>
       </div>
     </div>
