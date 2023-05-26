@@ -1,5 +1,7 @@
 import s from '../../components/Dialogs/Dialogs.module.css'
-import { renderEntierTree } from '../../render';
+let renderEntierTree = () => {
+    console.log(1111);
+}
 
 let state = {
     dialogePage: {
@@ -44,18 +46,22 @@ let state = {
 
 }
 
-export let addPost = (newText) => {
+export const addPost = (newText) => {
     let newPost = {
         key: "15", messeges: newText, likeCount: '10'
     }
-    state.postsPage.posts.push(newPost);
+    state.postsPage.posts.push(newPost); 
     renderEntierTree(state);
     state.postsPage.posts.newText = '';
 }
 
-export let addNewText = (newText) => {
+export const addNewText = (newText) => {
     state.postsPage.posts.newText = newText;
     renderEntierTree(state);
+}
+
+export const subscribe = (observer) => {  //Тот кто импортирует єту функцию может передать в нее наблюдателя
+    renderEntierTree = observer;
 }
 
 export default state;
