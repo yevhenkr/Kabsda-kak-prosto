@@ -15,12 +15,12 @@ const App = (props) => {
       <Sidebar items={props.store.sideBar} />
       <div className='app-wrapper-content'>
         <Routes>
-          <Route path='/dialoges' element={<Dialogs title='Dialoges' dialogePage={props.store.dialogePage} />} />
-          <Route path='/dialoges/:id' element={<Dialogs title='Dialoges' dialogePage={props.store.dialogePage} />} />
+          <Route path='/dialoges' element={<Dialogs title='Dialoges' dialogsPage={props.store.dialogsPage} />} />
+          <Route path='/dialoges/:id' element={<Dialogs title='Dialoges' dialogsPage={props.store.dialogsPage} />} />
 
-          <Route path='/news' element={<Dialogs title='News' dialogePage={props.store.dialogePage} />} />
-          <Route path='/music' element={<Dialogs title='Music' dialogePage={props.store.dialogePage} />} />
-          <Route path='/settings' element={<Dialogs title='Settings' dialogePage={props.store.dialogePage} />} />
+          <Route path='/news' element={<Dialogs title='News' dialogsPage={props.store.dialogsPage} />} />
+          <Route path='/music' element={<Dialogs title='Music' dialogsPage={props.store.dialogsPage} />} />
+          <Route path='/settings' element={<Dialogs title='Settings' dialogsPage={props.store.dialogsPage} />} />
           <Route path='/profile' element={<Profile store={props.store} 
           addPost={props.addPost}
           updateNewPostText={props.updateNewPostText}
