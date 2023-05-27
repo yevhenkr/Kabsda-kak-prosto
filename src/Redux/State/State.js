@@ -1,72 +1,58 @@
-import s from '../../components/Dialogs/Dialogs.module.css'
-
 let store = {
-    _callSubscriber() {
-        console.log('State changed');
+    _state: {
+        profilePage: {
+            posts: [
+                {id: 1, message: 'Hi, how are you?', likesCount: 12},
+                {id: 2, message: 'It\'s my first post', likesCount: 11},
+                {id: 3, message: 'Blabla', likesCount: 11},
+                {id: 4, message: 'Dada', likesCount: 11}
+            ],
+            newPostText: 'it-kamasutra.com'
+        },
+        dialogsPage: {
+            dialogs: [
+                {id: 1, name: 'Dimych'},
+                {id: 2, name: 'Andrew'},
+                {id: 3, name: 'Sveta'},
+                {id: 4, name: 'Sasha'},
+                {id: 5, name: 'Viktor'},
+                {id: 6, name: 'Valera'}
+            ],
+            messages: [
+                {id: 1, message: 'Hi'},
+                {id: 2, message: 'How is your it-kamasutra?'},
+                {id: 3, message: 'Yo'},
+                {id: 4, message: 'Yo'},
+                {id: 5, message: 'Yo'}
+            ]
+        },
+        sidebar: {}
     },
-
     getState() {
         return this._state;
     },
-    
-    _state: {
-        dialogePage: {
-            dialogs: [
-                { key: "11", id: 1, name: 'Kirill', className: `${s.dialogesItem} ${s.active}` },
-                { key: "12", id: 2, name: "Viky", className: s.dilogesItem },
-                { key: "13", id: 3, name: "Taras", className: s.dilogesItem },
-                { key: "14", id: 4, name: "Nastiy", className: s.dilogesItem },
-                { key: "15", id: 5, name: "Oleg", className: s.dilogesItem }
-            ],
-            messages: [
-                { key: "21", id: 1, name: 'Hi' },
-                { key: "22", id: 2, name: "Answer" },
-                { key: "23", id: 3, name: "Yo" },
-            ]
-        },
-        postsPage: {
-            posts: [
-                { key: "11", messeges: 'My post', likeCount: '2' },
-                { key: "12", messeges: 'My post2', likeCount: '4' },
-                { key: "13", messeges: 'My post3', likeCount: '6' },
-                { key: "14", messeges: 'My post4', likeCount: '8' }
-            ],
-            newText: ''
-        },
-        sideBar: {
-            friends: [
-                {
-                    key: "11", name: 'Kirill',
-                    icon: 'https://fikiwiki.com/uploads/posts/2022-02/thumbs/1645054711_1-fikiwiki-com-p-kartinki-ikonki-1.jpg'
-                },
-                {
-                    key: "12", name: 'Viky',
-                    icon: 'https://fikiwiki.com/uploads/posts/2022-02/thumbs/1645054711_1-fikiwiki-com-p-kartinki-ikonki-1.jpg'
-                },
-                {
-                    key: "13", name: 'Taras',
-                    icon: 'https://fikiwiki.com/uploads/posts/2022-02/thumbs/1645054711_1-fikiwiki-com-p-kartinki-ikonki-1.jpg'
-                },
-            ]
-        }
+    _callSubscriber() {
+        console.log('State changed');
     },
-
-   addPost(newText) {
+    addPost() {
         let newPost = {
-            key: "15", messeges: newText, likeCount: '10'
-        }
-        this._state.postsPage.posts.push(newPost);
+            id: 5,
+            message: this._state.profilePage.newPostText,
+            likesCount: 0
+        };
+        this._state.profilePage.posts.push(newPost);
+        this._state.profilePage.newPostText = '';
         this._callSubscriber(this._state);
-        this._state.postsPage.posts.newText = '';
     },
-
     updateNewPostText(newText) {
-        this._state.postsPage.posts.newText = newText;
+        this._state.profilePage.newPostText = newText;
         this._callSubscriber(this._state);
     },
-
-    subscribe(observer) {  //Тот кто импортирует єту функцию может передать в нее наблюдателя котріе приее візове віполняться
-        this._callSubscriber = observer;
+    subscribe(observer) {
+        this._callSubscriber = observer;  // observer
     }
 }
+
 export default store;
+window.store = store;
+// store - OOP
