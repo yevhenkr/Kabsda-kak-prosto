@@ -7,16 +7,15 @@ const MyPosts = (props) => {
 
   let addNewPost = () => {
     let text = newPostElement.current.value;
-    props.store.setPost(text);
+    props.addPost(text);
   }
 
   let onChange = () => {
     let text = newPostElement.current.value;
-    props.store.setNewText(text);
+    props.updateNewPostText(text);
   }
 
-  let posts = props.store.state.postsPage;
-  let postsElements = posts.posts.map(p => <Post key={p.key} messeges={p.messeges} likeCount={p.likeCount} />)
+  let postsElements = props.store.postsPage.posts.map(p => <Post key={p.key} messeges={p.messeges} likeCount={p.likeCount} />)
   return <div className={s.postsBlock}>
     <h3>My posts</h3>
     <div>
@@ -27,7 +26,7 @@ const MyPosts = (props) => {
         <button 
         onClick={addNewPost} 
         onChange={onChange}
-        value={posts.newText}>AddPost</button>
+        value={props.store.postsPage.newText}>AddPost</button>
       </div>
     </div>
     {postsElements}

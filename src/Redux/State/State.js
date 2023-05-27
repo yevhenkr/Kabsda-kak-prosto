@@ -5,7 +5,11 @@ let store = {
         console.log(1111);
     },
 
-    state: {
+    getState() {
+        return this._state;
+    },
+    
+    _state: {
         dialogePage: {
             dialogs: [
                 { key: "11", id: 1, name: 'Kirill', className: `${s.dialogesItem} ${s.active}` },
@@ -47,21 +51,21 @@ let store = {
         }
     },
 
-    setPost(newText) {
+   addPost(newText) {
         let newPost = {
             key: "15", messeges: newText, likeCount: '10'
         }
-        this.state.postsPage.posts.push(newPost);
-        this.renderEntierTree(this.state);
-        this.state.postsPage.posts.newText = '';
+        this._state.postsPage.posts.push(newPost);
+        this.renderEntierTree(this._state);
+        this._state.postsPage.posts.newText = '';
     },
 
-    setNewText(newText) {
-        this.state.postsPage.posts.newText = newText;
-        this.renderEntierTree(this.state);
+    updateNewPostText(newText) {
+        this._state.postsPage.posts.newText = newText;
+        this.renderEntierTree(this._state);
     },
 
-    subscribe(observer) {  //Тот кто импортирует єту функцию может передать в нее наблюдателя
+    subscribe(observer) {  //Тот кто импортирует єту функцию может передать в нее наблюдателя котріе приее візове віполняться
         this.renderEntierTree = observer;
     }
 }
