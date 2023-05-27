@@ -12,7 +12,7 @@ const App = (props) => {
     <div className='app-wrapper'>
       <Header />
       <Navbar />
-      {/* <Sidebar items={props.store.state.sideBar} /> */}
+      <Sidebar items={props.store.sideBar} />
       <div className='app-wrapper-content'>
         <Routes>
           <Route path='/dialoges' element={<Dialogs title='Dialoges' dialogePage={props.store.dialogePage} />} />

@@ -26,7 +26,22 @@ let store = {
                 {id: 5, message: 'Yo'}
             ]
         },
-        sidebar: {}
+        sideBar: {
+            friends: [
+                {
+                    key: "11", name: 'Kirill',
+                    icon: 'https://fikiwiki.com/uploads/posts/2022-02/thumbs/1645054711_1-fikiwiki-com-p-kartinki-ikonki-1.jpg'
+                },
+                {
+                    key: "12", name: 'Viky',
+                    icon: 'https://fikiwiki.com/uploads/posts/2022-02/thumbs/1645054711_1-fikiwiki-com-p-kartinki-ikonki-1.jpg'
+                },
+                {
+                    key: "13", name: 'Taras',
+                    icon: 'https://fikiwiki.com/uploads/posts/2022-02/thumbs/1645054711_1-fikiwiki-com-p-kartinki-ikonki-1.jpg'
+                },
+            ]
+        }
     },
     getState() {
         return this._state;
