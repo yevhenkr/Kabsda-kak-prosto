@@ -1,8 +1,8 @@
 import s from '../../components/Dialogs/Dialogs.module.css'
 
 let store = {
-    renderEntierTree() {
-        console.log(1111);
+    _callSubscriber() {
+        console.log('State changed');
     },
 
     getState() {
@@ -56,17 +56,17 @@ let store = {
             key: "15", messeges: newText, likeCount: '10'
         }
         this._state.postsPage.posts.push(newPost);
-        this.renderEntierTree(this._state);
+        this._callSubscriber(this._state);
         this._state.postsPage.posts.newText = '';
     },
 
     updateNewPostText(newText) {
         this._state.postsPage.posts.newText = newText;
-        this.renderEntierTree(this._state);
+        this._callSubscriber(this._state);
     },
 
     subscribe(observer) {  //Тот кто импортирует єту функцию может передать в нее наблюдателя котріе приее візове віполняться
-        this.renderEntierTree = observer;
+        this._callSubscriber = observer;
     }
 }
 export default store;
