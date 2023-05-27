@@ -5,7 +5,6 @@ import store from './Redux/State/State'
 import App from './App'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-debugger;
 export let renderEntierTree = (state) => {
     root.render(
         <React.StrictMode>
