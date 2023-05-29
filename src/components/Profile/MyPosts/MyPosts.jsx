@@ -1,7 +1,7 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import { updateNewPostTextActionCreator, addPostActionCreator } from "../../../Redux/State/State"
+import { updateNewPostTextActionCreator, addPostActionCreator } from "../../../Redux/State/ProfileReduser"
 
 const MyPosts = (props) => {
     let newPostElement = React.createRef();
@@ -15,8 +15,9 @@ const MyPosts = (props) => {
         props.dispatch(updateNewPostTextActionCreator(text));
 
     }
+    let profilePage = props.store.getState().profilePage;
     // debugger;
-    let postsElements = props.store.profilePage.posts.map(p => <Post key={p.key} message={p.message} likesCount={p.likesCount} />)
+    let postsElements = profilePage.posts.map(p => <Post key={p.key} message={p.message} likesCount={p.likesCount} />)
     return <div className={s.postsBlock}>
         <h3>My posts</h3>
         <div>
@@ -29,7 +30,7 @@ const MyPosts = (props) => {
             <div className={s.myPostButton}>
                 <button
                     onClick={addNewPost}
-                    value={props.store.profilePage.newPostText}>AddPost</button>
+                    value={profilePage.newPostText}>AddPost</button>
             </div>
         </div>
         {postsElements}
