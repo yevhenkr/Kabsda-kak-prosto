@@ -45,7 +45,7 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type = "ADD-POST") {
+        if (action.type == addPost) {
             let newPost = {
                 id: 5,
                 message: this._state.profilePage.newPostText,
@@ -54,7 +54,7 @@ let store = {
             this._state.profilePage.posts.push(newPost);
             this._state.profilePage.newPostText = '';
             this._callSubscriber(this._state);
-        } else if (action.type = "UPDATE-NEW-POST-TEXT") {
+        } else if (action.type == updatePost) {
             this._state.profilePage.newPostText = action.text;
             this._callSubscriber(this._state);
         }
@@ -84,6 +84,10 @@ let store = {
         this._callSubscriber = observer;  // observer
     }
 }
+const addPost = "ADD_POST";
+const updatePost = "UPDATE_NEW_POST_TEXT";
+export const addNewPostCreateAction = () => ({ type: addPost })
+export const setNewTextPostCreateAction = (text) => ({ type: updatePost, text: text })
 
 export default store;
 window.store = store;

@@ -1,20 +1,19 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
+import { setNewTextPostCreateAction, addNewPostCreateAction } from "../../../Redux/State/State"
 
 const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     let addNewPost = () => {
-        let text = newPostElement.current.value;
-        props.dispatch({ type: "ADD-POST"});
+        props.dispatch(addNewPostCreateAction());
 
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.updateNewPostText(text);
-        props.dispatch({ type: "UPDATE-NEW-POST-TEXT", text: text });
+        props.dispatch(setNewTextPostCreateAction(text));
 
     }
     let postsElements = props.store.profilePage.posts.map(p => <Post key={p.key} message={p.message} likesCount={p.likesCount} />)
@@ -36,5 +35,7 @@ const MyPosts = (props) => {
         {postsElements}
     </div>
 }
+
+
 
 export default MyPosts;
