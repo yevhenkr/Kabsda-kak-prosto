@@ -1,24 +1,42 @@
 import React from "react";
 import s from './Dialogs.module.css'
-import Dialog from './Dialog/Dialog'
+import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
-import TextArea from "./TextArea/TextArea"
+import classes from '../Profile/MyPosts/MyPosts.module.css'
+import { updateNewMessageBodyCreator, sendMessageCreator } from '../../Redux/State/State'
 
-
-  
 const Dialogs = (props) => {
-  let dialogePage = props.dialogsPage;
-  let messagesElements = dialogePage.messages.map(m => <Message key={m.key} message={m.message} />);
-  let dialogsElements = dialogePage.dialogs.map(d => <Dialog key={d.key} name={d.name} id={d.id} className={d.className} />)
-  return <div className={s.diloges}>
-    <div className={s.dilogesItems}>
-      {dialogsElements}
-    </div>
-    <div className={s.dilogesMessages}>
-      {messagesElements}
-    </div>
-    <TextArea store={props.store} dispatch={props.dispatch} title="Enter message"/>
-  </div>
+    let state = props.store.getState().dialogsPage;
+    // debugger;
+    let dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} id={d.id} />);
+    let messagesElements = state.messages.map(m => <Message message={m.message} />);
+    let newMessageBody = state.newMessageBody;
+
+    let onSendMessageClick = () => {
+        props.store.dispatch(sendMessageCreator());
+    }
+
+    let onNewMessageChange = (e) => {
+        let body = e.target.value;
+        props.store.dispatch(updateNewMessageBodyCreator(body));
+    }
+
+    return (
+        <div className={s.dialogs}>
+            <div className={s.dialogsItems}>
+                {dialogsElements}
+            </div>
+            <div className={s.messages}>
+                <div>{messagesElements}</div>
+                <div>
+                    <div><textarea value={newMessageBody}
+                        onChange={onNewMessageChange}
+                        placeholder='Enter your message'></textarea></div>
+                    <div><button onClick={onSendMessageClick}>Send</button></div>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default Dialogs;

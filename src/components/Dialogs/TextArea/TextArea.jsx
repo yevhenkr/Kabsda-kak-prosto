@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classes from '../../Profile/MyPosts/MyPosts.module.css'
-import { setNewMessageCreateCation, addMessageCreateCation } from '../../../Redux/State/State'
+import { updateNewMessageBodyCreator, sendMessageCreator } from '../../../Redux/State/State'
 
 
 const TextArea = (props) => {
+  debugger;
   let enterElement = React.createRef();
-
   const onMessageChange = () => {
     let text = enterElement.current.value;
-    props.dispatch(setNewMessageCreateCation(text));
+    props.dispatch(updateNewMessageBodyCreator(text));
   }
   const addMessage = () => {
-    props.dispatch(addMessageCreateCation());
+    props.dispatch(sendMessageCreator());
     enterElement.current.value = "";
   }
   return <div>
@@ -21,6 +21,7 @@ const TextArea = (props) => {
       <div className={classes.myPostTexArea}>
         <textarea ref={enterElement}
           onChange={onMessageChange}
+          // value={props.dialogePage.newMessage}
           />
       </div>
       <div className={classes.myPostButton}>

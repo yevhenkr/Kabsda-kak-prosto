@@ -9,7 +9,7 @@ export let renderEntierTree = (state) => {
     root.render(
         <React.StrictMode>
             <BrowserRouter>
-            <App store={state} dispatch={store.dispatch.bind(store)} />
+                <App state={state} dispatch={store.dispatch.bind(store)} store={store} />
             </BrowserRouter>
         </React.StrictMode>
     );
