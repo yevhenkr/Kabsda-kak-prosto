@@ -1,23 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classes from '../../Profile/MyPosts/MyPosts.module.css'
+import { setNewMessageCreateCation, addMessageCreateCation } from '../../../Redux/State/State'
 
 
 const TextArea = (props) => {
   let enterElement = React.createRef();
 
-  const showText = () => {
+  const onMessageChange = () => {
     let text = enterElement.current.value;
-    alert(text);
+    props.dispatch(setNewMessageCreateCation(text));
+  }
+  const addMessage = () => {
+    props.dispatch(addMessageCreateCation());
+    enterElement.current.value = "";
   }
   return <div>
-    <h2>Enter message</h2>
+    <h2>{props.title}</h2>
     <div>
       <div className={classes.myPostTexArea}>
-        <textarea ref={enterElement} ></textarea>
+        <textarea ref={enterElement}
+          onChange={onMessageChange}
+          />
       </div>
       <div className={classes.myPostButton}>
-        <button onClick={showText}>AddPost</button>
+        <button
+          onClick={addMessage}
+        >AddPost</button>
       </div>
     </div>
   </div>

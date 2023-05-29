@@ -15,12 +15,12 @@ const App = (props) => {
       <Sidebar items={props.store.sideBar} />
       <div className='app-wrapper-content'>
         <Routes>
-          <Route path='/dialoges' element={<Dialogs title='Dialoges' dialogsPage={props.store.dialogsPage} />} />
-          <Route path='/dialoges/:id' element={<Dialogs title='Dialoges' dialogsPage={props.store.dialogsPage} />} />
+          <Route path='/dialoges' element={<Dialogs dispatch={props.dispatch}title='Dialoges' dialogsPage={props.store.dialogsPage} />} />
+          <Route path='/dialoges/:id' element={<Dialogs dispatch={props.dispatch}title='Dialoges' dialogsPage={props.store.dialogsPage} />} />
 
-          <Route path='/news' element={<Dialogs title='News' dialogsPage={props.store.dialogsPage} />} />
-          <Route path='/music' element={<Dialogs title='Music' dialogsPage={props.store.dialogsPage} />} />
-          <Route path='/settings' element={<Dialogs title='Settings' dialogsPage={props.store.dialogsPage} />} />
+          <Route path='/news' element={<Dialogs dispatch={props.dispatch}title='News' dialogsPage={props.store.dialogsPage} />} />
+          <Route path='/music' element={<Dialogs dispatch={props.dispatch}title='Music' dialogsPage={props.store.dialogsPage} />} />
+          <Route path='/settings' element={<Dialogs dispatch={props.dispatch} title='Settings' dialogsPage={props.store.dialogsPage} />} />
           <Route path='/profile' element={<Profile store={props.store} 
           dispatch={props.dispatch}
           />} />

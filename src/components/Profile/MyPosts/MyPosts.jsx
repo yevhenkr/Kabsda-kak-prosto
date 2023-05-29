@@ -8,7 +8,6 @@ const MyPosts = (props) => {
 
     let addNewPost = () => {
         props.dispatch(addNewPostCreateAction());
-
     }
 
     let onPostChange = () => {
@@ -16,6 +15,7 @@ const MyPosts = (props) => {
         props.dispatch(setNewTextPostCreateAction(text));
 
     }
+    // debugger;
     let postsElements = props.store.profilePage.posts.map(p => <Post key={p.key} message={p.message} likesCount={p.likesCount} />)
     return <div className={s.postsBlock}>
         <h3>My posts</h3>

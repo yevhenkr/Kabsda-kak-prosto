@@ -8,7 +8,7 @@ import TextArea from "./TextArea/TextArea"
   
 const Dialogs = (props) => {
   let dialogePage = props.dialogsPage;
-  let messagesElements = dialogePage.dialogs.map(m => <Message key={m.key} name={m.name} />);
+  let messagesElements = dialogePage.messages.map(m => <Message key={m.key} message={m.message} />);
   let dialogsElements = dialogePage.dialogs.map(d => <Dialog key={d.key} name={d.name} id={d.id} className={d.className} />)
   return <div className={s.diloges}>
     <div className={s.dilogesItems}>
@@ -17,7 +17,7 @@ const Dialogs = (props) => {
     <div className={s.dilogesMessages}>
       {messagesElements}
     </div>
-    <TextArea />
+    <TextArea store={props.store} dispatch={props.dispatch} title="Enter message"/>
   </div>
 }
 

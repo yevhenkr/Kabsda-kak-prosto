@@ -19,12 +19,14 @@ let store = {
                 { id: 6, name: 'Valera' }
             ],
             messages: [
-                { id: 1, message: 'Hi' },
-                { id: 2, message: 'How is your it-kamasutra?' },
-                { id: 3, message: 'Yo' },
-                { id: 4, message: 'Yo' },
-                { id: 5, message: 'Yo' }
-            ]
+                { id: 1, message: ' - Hi' },
+                { id: 2, message: ' - How is your it-kamasutra?' },
+                { id: 3, message: ' - Yo' },
+                { id: 4, message: ' - Yo' },
+                { id: 5, message: ' - Yo' }
+            ],
+            newMessages: 'it-kamasutra.com'
+
         },
         sideBar: {
             friends: [
@@ -58,6 +60,20 @@ let store = {
             this._state.profilePage.newPostText = action.text;
             this._callSubscriber(this._state);
         }
+        else if (action.type == addedMessage) {
+            let newMessage = {
+                id: 6,
+                message: this._state.dialogsPage.newMessages,
+            };
+            this._state.dialogsPage.messages.push(newMessage);
+            this._callSubscriber(this._state);
+        }
+        
+        else if (action.type == updateMessageText) {
+            this._state.dialogsPage.newMessages = " - " + action.text;
+            this._callSubscriber(this._state);
+        } 
+
     },
 
     getState() {
@@ -88,6 +104,10 @@ const addPost = "ADD_POST";
 const updatePost = "UPDATE_NEW_POST_TEXT";
 export const addNewPostCreateAction = () => ({ type: addPost })
 export const setNewTextPostCreateAction = (text) => ({ type: updatePost, text: text })
+const updateMessageText = "UPDATE_MESSAGE";
+const addedMessage = "ADDED_MESSAGE";
+export const setNewMessageCreateCation = (text) => ({ type: updateMessageText, text: text })
+export const addMessageCreateCation = () => ({ type: addedMessage })
 
 export default store;
 window.store = store;
