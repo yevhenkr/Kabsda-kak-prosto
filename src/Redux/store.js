@@ -1,6 +1,6 @@
-import profileReduser from "./profileReduser"
-import dialogsReduser from "./dialogsReduser"
-import sidebarReduser from "./sidebarReduser"
+import profileReducer from "./profileReduser"
+import dialogsReducer from "./dialogsReduser"
+import sidebarReducer from "./sidebarReduser"
 
 let store = {
     _state: {
@@ -38,18 +38,22 @@ let store = {
     },
 
     getState() {
+        debugger;
         return this._state;
     },
     subscribe(observer) {
         this._callSubscriber = observer;  // observer
     },
 
-    dispatch(action) { // { type: 'ADD-POST' }
-        profileReduser(this._state, action);
-        dialogsReduser(this._state, action);
+    dispatch(action) {
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
         this._callSubscriber(this._state);
     }
 }
+
 
 export default store;
 window.store = store;

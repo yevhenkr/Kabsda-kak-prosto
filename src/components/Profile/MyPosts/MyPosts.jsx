@@ -11,12 +11,13 @@ const MyPosts = (props) => {
     }
 
     let onPostChange = () => {
+        debugger;
         let text = newPostElement.current.value;
         props.dispatch(updateNewPostTextActionCreator(text));
 
     }
     let profilePage = props.store.getState().profilePage;
-    // debugger;
+    debugger;
     let postsElements = profilePage.posts.map(p => <Post key={p.key} message={p.message} likesCount={p.likesCount} />)
     return <div className={s.postsBlock}>
         <h3>My posts</h3>
