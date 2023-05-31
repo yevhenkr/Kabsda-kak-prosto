@@ -17,7 +17,7 @@ export let rerenderEntireTree = (state) => {
 rerenderEntireTree(store.getState()); //Нужно отдать в stste как колбек
 
 store.subscribe(() => {
-    debugger
+    // debugger
     let state = store.getState();
     rerenderEntireTree(state);
 }); //теперь в state может візвать нашу іцункцию 
