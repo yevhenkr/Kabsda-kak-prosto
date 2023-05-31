@@ -12,9 +12,9 @@ const MyPosts = (props) => {
         props.dispatch(addPostActionCreator());
     }
 
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.dispatch(updateNewPostTextActionCreator(text));
+    let onPostChange = (e) => {
+        let text = e.target.value;
+        props.store.dispatch(updateNewPostTextActionCreator(text));
 
     }
     let profilePage = props.store.getState().profilePage;
@@ -25,9 +25,9 @@ const MyPosts = (props) => {
         <div>
             <div className={s.myPostTexArea}>
                 <textarea value={newPostText}
-                    ref={newPostElement}
                     onChange={onPostChange}
-                ></textarea>
+                    placeholder='Enter your post'
+                />
             </div>
             <div className={s.myPostButton}>
                 <button
