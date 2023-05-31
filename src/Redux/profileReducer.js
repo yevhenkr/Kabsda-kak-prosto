@@ -11,7 +11,7 @@ const InitState = {
     newPostText: ''
 }
 const profileReducer = (state = InitState, action) => {
-//    debugger
+    //    debugger
     switch (action.type) {
         case ADD_POST:
             let newPost = {
@@ -29,7 +29,6 @@ const profileReducer = (state = InitState, action) => {
             return state;
     }
 }
-
 
 export const addPostActionCreator = () => ({ type: ADD_POST })
 export const updateNewPostTextActionCreator = (text) =>
