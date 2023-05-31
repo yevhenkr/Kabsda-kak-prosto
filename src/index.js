@@ -5,7 +5,7 @@ import store from './Redux/store'
 import App from './App'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-export let renderEntierTree = (state) => {
+export let rerenderEntireTree = (state) => {
     root.render(
         <React.StrictMode>
             <BrowserRouter>
@@ -14,6 +14,10 @@ export let renderEntierTree = (state) => {
         </React.StrictMode>
     );
 }
-renderEntierTree(store.getState()); //Нжно отдать в stste как колбек
+rerenderEntireTree(store.getState()); //Нужно отдать в stste как колбек
 
-store.subscribe(renderEntierTree); //теперь в state может візвать нашу іцункцию 
+store.subscribe(() => {
+    debugger
+    let state = store.getState();
+    rerenderEntireTree(state);
+}); //теперь в state может візвать нашу іцункцию 

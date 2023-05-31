@@ -5,7 +5,6 @@ import { updateNewMessageBodyCreator, sendMessageCreator } from '../../../Redux/
 
 
 const TextArea = (props) => {
-  debugger;
   let enterElement = React.createRef();
   const onMessageChange = () => {
     let text = enterElement.current.value;
