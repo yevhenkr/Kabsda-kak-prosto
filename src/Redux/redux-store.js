@@ -14,4 +14,5 @@ const store = configureStore({ // Создание хранилища данны
     reducer: reducers
 });
 
+window.store = store;
 export default store;

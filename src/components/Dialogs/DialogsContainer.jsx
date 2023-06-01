@@ -9,8 +9,6 @@ let mapStateToProps = (state) => {
     }
 }
 let mapDispathToProps = (dispatch) => {
-    debugger
-
     return {
         onNewMessageChange:(body)=>{
             let action = updateNewMessageBodyCreator(body);
