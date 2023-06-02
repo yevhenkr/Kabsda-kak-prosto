@@ -16,7 +16,7 @@ const mapDispathToProps = (dispatch) => {
         changePost: (text) => {
             let action = updateNewPostTextActionCreator(text);
             dispatch(action)
-        },
+        }
     }
 }
 
