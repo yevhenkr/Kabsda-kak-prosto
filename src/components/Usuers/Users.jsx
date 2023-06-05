@@ -6,12 +6,10 @@ import userPhoto from '../../../src/assets/imges/users.jpg'
 
 class Users extends React.Component {
     setUsers = () => {
-        if (this.props.users.length === 0) {
             axios.get("https://social-network.samuraijs.com/api/1.0/users")
                 .then(response => {
                     this.props.setUsers(response.data.items);
                 });
-        }
     }
     render() {
         return <div>
