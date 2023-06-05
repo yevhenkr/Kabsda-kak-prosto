@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import { Routes, Route } from "react-router-dom";
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import UsersContainer from './components/Usuers/UsersContainer';
 
 const App = (props) => {
   return (
@@ -20,6 +21,7 @@ const App = (props) => {
           <Route path='/news' element={<DialogsContainer store={props.store} title='News' />} />
           <Route path='/music' element={<DialogsContainer store={props.store} title='Music' />} />
           <Route path='/settings' element={<DialogsContainer store={props.store} title='Settings' />} />
+          <Route path='/users' element={<UsersContainer />} />
           <Route path='/profile' element={<Profile store={props.store}
             dispatch={props.dispatch}
           />} />
