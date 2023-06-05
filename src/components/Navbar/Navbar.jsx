@@ -25,6 +25,9 @@ const Navbar = () => {
       <div className={s.item}>
         <Link to="/settings" className={settingsMatch ? s.activeLink : ""}>Settings</Link>
       </div>
+      <div className={s.item}>
+        <Link to="/users" className={settingsMatch ? s.activeLink : ""}>Users</Link>
+      </div>
     </nav>
   )
 }
