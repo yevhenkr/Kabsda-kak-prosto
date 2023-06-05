@@ -11,8 +11,8 @@ class Users extends React.Component {
                 this.props.setUsers(response.data.items);
             });
     }
-
     render() {
+        debugger
         return <div>
             {
                 this.props.users.map(u => <div key={u.id}>
