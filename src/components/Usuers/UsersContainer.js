@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { followAC, setCurrentPageAC, setUsersAC, unfollowAC, toggleIsFetchingAC, setTotalUsersCountAC } from "../../Redux/usersReducer";
+import { follow, setCurrentPage, setUsers, unfollow, toggleIsFetching, setTotalUsersCount } from "../../Redux/usersReducer";
 import axios from 'axios';
 import Users from './Users';
 import Preloader from '../../components/common/preloader/Preloader';
@@ -53,27 +53,29 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId));
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId));
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users));
-        },
-        setCurrentPage: (currentPage) => {
-            dispatch(setCurrentPageAC(currentPage));
-        },
-        setTotalUsersCount: (totalUsersCount) => {
-            dispatch(setTotalUsersCountAC(totalUsersCount));
-        },
-        toggleIsFetching: (isFetching) => { // Створюємо колбек котрій попаде в пропси  
-            dispatch(toggleIsFetchingAC(isFetching));
-        }
-    }
-}
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         follow: (userId) => {
+//             dispatch(followAC(userId));
+//         },
+//         unfollow: (userId) => {
+//             dispatch(unfollowAC(userId));
+//         },
+//         setUsers: (users) => {
+//             dispatch(setUsersAC(users));
+//         },
+//         setCurrentPage: (currentPage) => {
+//             dispatch(setCurrentPageAC(currentPage));
+//         },
+//         setTotalUsersCount: (totalUsersCount) => {
+//             dispatch(setTotalUsersCountAC(totalUsersCount));
+//         },
+//         toggleIsFetching: (isFetching) => { // Створюємо колбек котрій попаде в пропси  
+//             dispatch(toggleIsFetchingAC(isFetching));
+//         }
+//     }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, 
+    {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching}
+)(UsersContainer);
