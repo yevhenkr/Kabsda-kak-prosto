@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import { Routes, Route } from "react-router-dom";
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Usuers/UsersContainer';
@@ -22,9 +22,7 @@ const App = (props) => {
           <Route path='/music' element={<DialogsContainer store={props.store} title='Music' />} />
           <Route path='/settings' element={<DialogsContainer store={props.store} title='Settings' />} />
           <Route path='/users' element={<UsersContainer />} />
-          <Route path='/profile' element={<Profile store={props.store}
-            dispatch={props.dispatch}
-          />} />
+          <Route path='/profile/:id' element={<ProfileContainer />} />
         </Routes>
       </div>
     </div>
