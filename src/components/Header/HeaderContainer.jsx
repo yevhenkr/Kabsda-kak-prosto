@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { headerAPI } from "../../api/api";
 class HeaderContainer extends React.Component {
   render() {
-    debugger
     headerAPI.getUsers()
     .then(data => {
         if (data.resultCode === 0) {
