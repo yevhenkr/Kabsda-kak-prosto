@@ -7,8 +7,8 @@ const instance = axios.create({
 });
 
 
-export const profileAPI = {
-    getUsers(profileUserId) {
+export const autchAPI = {
+    me(profileUserId) {
         return instance.get(`profile/` + profileUserId)
             .then(response => response.data);
     }
