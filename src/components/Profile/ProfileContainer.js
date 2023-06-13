@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Profile from "./Profile";
-import axios from "axios";
 import { connect } from "react-redux";
 import { setUserProfile } from "../../Redux/profileReducer";
 import { useParams } from 'react-router-dom';
@@ -15,11 +14,8 @@ function ProfileContainer({ setUserProfile, profile }) {
             profileUserId = 2;
         }
 
-        // axios
-        //     .get(`https://social-network.samuraijs.com/api/1.0/profile/` + profileUserId)
             profileAPI.getUsers(profileUserId)
             .then(data => {
-                // debugger
                 setUserProfile(data);
             });
     }, [userId, setUserProfile]);
