@@ -1,4 +1,4 @@
-import { autchAPI } from "../api/api";
+import { profileAPI } from "../api/api";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
@@ -45,7 +45,7 @@ export const addPostActionCreator = () => ({ type: ADD_POST });
 export const updateNewPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
 export const setUserProfile = (profile) => ({ type: SET_PROFILE, profile: profile });
 export const getUserProfile = (userId) => (dispath) => {
-    autchAPI.me(userId).then(data => {
+    profileAPI.me(userId).then(data => {
         dispath(setUserProfile(data));
     })
 };

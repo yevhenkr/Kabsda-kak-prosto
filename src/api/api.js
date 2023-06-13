@@ -7,15 +7,15 @@ const instance = axios.create({
 });
 
 
-export const autchAPI = {
+export const profileAPI = {
     me(profileUserId) {
         return instance.get(`profile/` + profileUserId)
             .then(response => response.data);
     }
 }
 
-export const headerAPI = {
-    getUsers() {
+export const authAPI = {
+    me() {
         return instance.get(`/auth/me`)
             .then(response => {
                 return response.data;
@@ -42,9 +42,7 @@ export const usersAPI = {
                 return response.data;
             });
     },
-
     profileAPI(profileUserId) {
-        debugger
         return instance.get(`profile/${profileUserId}`)
             .then(response => response.data);
     }
