@@ -29,23 +29,23 @@ export const usersAPI = {
             .then(response => {
                 return response.data;
             });
-    }
-}
-
-export const usersAPIUnFollow = {
-    getUsers(id = 1) {
-        return instance.delete(`follow/${id}`)
-            .then(response => {
-                return response.data;
-            });
-    }
-}
-
-export const usersAPIFollow = {
-    getUsers(id = 1) {
+    },
+    follow(id = 1) {
         return instance.post(`follow/${id}`)
             .then(response => {
                 return response.data;
             });
+    },
+    unfollow(id = 1) {
+        return instance.delete(`follow/${id}`)
+            .then(response => {
+                return response.data;
+            });
+    },
+
+    profileAPI(profileUserId) {
+        debugger
+        return instance.get(`profile/${profileUserId}`)
+            .then(response => response.data);
     }
 }
