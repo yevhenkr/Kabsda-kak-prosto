@@ -3,10 +3,10 @@ import Profile from "./Profile";
 import { connect } from "react-redux";
 import { getUserProfile } from "../../Redux/profileReducer";
 import { useParams } from 'react-router-dom';
+import withAuthRedirect from '../../HOC/WhithAuthRedirect'
 
-function ProfileContainer({profile, getUserProfile }) {
+function ProfileContainer({ profile, getUserProfile}) {
     const { userId } = useParams();
-
     useEffect(() => {
         let profileUserId = userId;
         if (!profileUserId) {
@@ -22,4 +22,6 @@ let mapStateToProps = state => ({
     profile: state.profilePage.profile
 });
 
-export default connect(mapStateToProps, { getUserProfile })(ProfileContainer);
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+
+export default connect(mapStateToProps, { getUserProfile })(AuthRedirectComponent);

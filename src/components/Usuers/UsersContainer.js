@@ -6,6 +6,7 @@ import {
 } from "../../Redux/usersReducer";
 import Users from './Users';
 import Preloader from '../../components/common/preloader/Preloader';
+import withAuthRedirect from '../../HOC/WhithAuthRedirect';
 
 
 class UsersContainer extends React.Component {
@@ -14,14 +15,6 @@ class UsersContainer extends React.Component {
     }
     onPageChanged = (currentPage) => {
         this.props.getUsers(currentPage, this.props.pageSize);
-
-        // this.props.setCurrentPage(currentPage);
-        // this.props.toggleIsFetching(true);
-        // usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-        //     .then(data => {
-        //         this.props.toggleIsFetching(false);
-        //         this.props.setUsers(data.items);
-        //     });
     }
     render() {
         return <>
@@ -34,7 +27,7 @@ class UsersContainer extends React.Component {
                 users={this.props.users}
                 follow={this.props.follow}
                 unfollow={this.props.unfollow}
-                 followingInProgress={this.props.followingInProgress}
+                followingInProgress={this.props.followingInProgress}
             />
         </>
     }
@@ -51,32 +44,10 @@ let mapStateToProps = (state) => {
     }
 }
 
-// let mapDispatchToProps = (dispatch) => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId));
-//         },
-//         unfollow: (userId) => {
-//             dispatch(unfollowAC(userId));
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersAC(users));
-//         },
-//         setCurrentPage: (currentPage) => {
-//             dispatch(setCurrentPageAC(currentPage));
-//         },
-//         setTotalUsersCount: (totalUsersCount) => {
-//             dispatch(setTotalUsersCountAC(totalUsersCount));
-//         },
-//         toggleIsFetching: (isFetching) => { // Створюємо колбек котрій попаде в пропси  
-//             dispatch(toggleIsFetchingAC(isFetching));
-//         }
-//     }
-// }
-
-export default connect(mapStateToProps,
+let withRedirect = withAuthRedirect(UsersContainer);
+export default withAuthRedirect(connect(mapStateToProps,
     {
-        follow, unfollow,  setCurrentPage,
+        follow, unfollow, setCurrentPage,
         toggleFollowingProgress, getUsers
     }
-)(UsersContainer);
+)(withRedirect));
