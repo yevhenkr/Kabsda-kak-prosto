@@ -3,6 +3,7 @@ import { profileAPI } from "../api/api";
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_PROFILE = 'SET_PROFILE';
+const SET_STATUS = 'SET_STATUS';
 
 
 const initialState = {
@@ -13,10 +14,12 @@ const initialState = {
         { id: 4, message: 'Dada', likesCount: 11 }
     ],
     newPostText: '',
-    profile: null
+    profile: null,
+    status: ""
 };
 
 const profileReducer = (state = initialState, action) => {
+    // debugger
     switch (action.type) {
         case ADD_POST: {
             const newePost = {
@@ -36,6 +39,11 @@ const profileReducer = (state = initialState, action) => {
             };
         case SET_PROFILE:
             return { ...state, profile: action.profile };
+        case SET_STATUS:
+            return {
+                ...state,
+                status: action.status
+            };
         default:
             return state;
     }
@@ -44,10 +52,37 @@ const profileReducer = (state = initialState, action) => {
 export const addPostActionCreator = () => ({ type: ADD_POST });
 export const updateNewPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
 export const setUserProfile = (profile) => ({ type: SET_PROFILE, profile: profile });
-export const getUserProfile = (userId) => (dispath) => {
-    profileAPI.me(userId).then(data => {
-        dispath(setUserProfile(data));
+export const getUserProfile = (userId) => (dispatch) => {
+    profileAPI.getProile(userId).then(data => {
+        // debugger
+        dispatch(setUserProfile(data));
     })
 };
+
+export const setStatus = (status) => ({ type: SET_STATUS, status });
+export const getStatus = (userId) => (dispatch) => {
+    // debugger
+
+    profileAPI.getStatus(userId)
+        .then(data => {
+            // debugger
+
+            dispatch(setStatus(data));
+        })
+};
+export const updateStatus = (status) => (dispatch) => {
+    profileAPI.updateStatus(status)
+    .then(response => {
+        if (response.data.resultCode === 0) {
+            debugger
+            dispatch(setStatus(status));
+        }
+    })
+    .catch(error => {
+        // Обработка ошибки, если не удалось выполнить запрос
+        console.log(error);
+    });
+};
+
 
 export default profileReducer;

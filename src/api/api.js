@@ -8,10 +8,22 @@ const instance = axios.create({
 
 
 export const profileAPI = {
-    me(profileUserId) {
-        return instance.get(`profile/` + profileUserId)
+    getProile(userId) {
+        return instance.get(`profile/` + userId)
             .then(response => response.data);
-    }
+    },
+    getStatus(userId) {
+        debugger
+        return instance.get(`profile/status/` + userId)
+            .then(response => response.data);
+    },
+    updateStatus(status) {
+        console.log(`https://social-network.samuraijs.com/api/1.0/profile/status/`, {status});
+        debugger
+        return instance.put(`https://social-network.samuraijs.com/api/1.0/profile/status/`, {status:status})
+            // .then(response => response.data);
+    },
+
 }
 
 export const authAPI = {
@@ -41,9 +53,5 @@ export const usersAPI = {
             .then(response => {
                 return response.data;
             });
-    },
-    profileAPI(profileUserId) {
-        return instance.get(`profile/${profileUserId}`)
-            .then(response => response.data);
     }
 }
